@@ -1,4 +1,9 @@
-﻿
+﻿// \file ModalLoopSurprise.cpp
+// \last_updated 2025-04-01
+// \author oss <oss@yuwoll.com>
+// \copyright (C) 2025. Yuwoll Co. All rights reserved.
+
+
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
@@ -15,8 +20,8 @@ int gCount;
 // 윈도우 프로시저 함수 선언
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-// MessageTimer 함수 선언: 메시지 박스를 조건에 따라 호출
-void			 MessageTimer();
+// ShowMessageBoxes 함수 선언: 메시지 박스를 조건에 따라 호출
+void			 ShowMessageBoxes();
 
 int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ int nCmdShow)
 {
@@ -79,8 +84,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			// 타이머 설정: 100ms 간격으로 WM_TIMER 메시지를 발생시킴
 			SetTimer(hwnd, eTimerId::TimerMessageBox, 100, nullptr);
 
-			// MessageTimer 함수 호출하여 메시지 박스 표시
-			MessageTimer();
+			// ShowMessageBoxes 함수 호출하여 메시지 박스 표시
+			ShowMessageBoxes();
 
 			/// 만약 타이머 이벤트로 인해 gCount가 2로 변경되었다면,
 			/// 모든 작업이 완료되었으므로 메시지 루프를 종료하기 위해 WM_QUIT 메시지 전송
@@ -125,7 +130,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 }
 
 // gCount 값에 따라 모달 메시지 박스를 순차적으로 표시
-void MessageTimer()
+void ShowMessageBoxes()
 {
 	// gCount가 1이면 "Hello" 메시지 박스 표시
 	if (gCount == 1) MessageBoxW(nullptr, L"Hello", L"", MB_OK);
