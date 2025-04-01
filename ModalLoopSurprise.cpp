@@ -106,12 +106,15 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 	case WM_TIMER:
 		{
-			// gCount 값이 1인 경우에만 2로 증가시킴
-			if (gCount == 1)
-				gCount++;
+			if (wParam == eTimerId::TimerMessageBox)
+			{
+				// gCount 값이 1인 경우에만 2로 증가시킴
+				if (gCount == 1)
+					gCount++;
 
-			// 타이머 중복 실행을 방지하기 위해 타이머 종료
-			KillTimer(hwnd, eTimerId::TimerMessageBox);
+				// 타이머 중복 실행을 방지하기 위해 타이머 종료
+				KillTimer(hwnd, eTimerId::TimerMessageBox);
+			}
 			return 0;
 		}
 
