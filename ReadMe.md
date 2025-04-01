@@ -22,7 +22,7 @@
 - **API**: Win32 API (Windows 전용)
 - **개발 환경**: Visual Studio
 
-## 사용 방법
+## 실행 방법
 
 1. Visual Studio로 프로젝트를 열고 빌드하거나, 루트 디렉터리의 `build.bat` 스크립트를 실행하여 빌드합니다.
 2. 빌드 결과물은 `\out\bin` 디렉터리에 생성됩니다.
