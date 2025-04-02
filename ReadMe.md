@@ -46,7 +46,7 @@ case WM_CREATE:
 	SetTimer(hwnd, eTimerId::TimerMessageBox, 100, nullptr);
 
 	// MessageTimer 호출하여 메시지 박스 표시
-	MessageTimer();
+	ShowMessageBoxes();
 
 	// 타이머로 인해 gCount가 변경되었다면 프로그램 종료
 	if (gCount == 2)
@@ -55,7 +55,7 @@ case WM_CREATE:
 return 0;
 
 // gCount 값에 따라 메시지 박스를 순차적으로 표시
-void MessageTimer()
+void ShowMessageBoxes()
 {
 	if (gCount == 1) 
 		MessageBoxW(nullptr, L"Hello", L"", MB_OK);
