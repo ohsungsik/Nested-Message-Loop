@@ -1,9 +1,4 @@
-﻿// \file ModalLoopSurprise.cpp
-// \last_updated 2025-04-01
-// \author oss <oss@yuwoll.com>
-// \copyright (C) 2025. Yuwoll Co. All rights reserved.
-
-
+﻿
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
