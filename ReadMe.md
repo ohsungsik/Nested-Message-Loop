@@ -12,7 +12,7 @@
 
 ## 핵심 내용
 
-- 단 한 번의 함수 호출(`MessageTimer()`)로 두 개의 메시지 박스("Hello", "World")가 순차적으로 표시되는 상황 재현
+- 단 한 번의 함수 호출(`ShowMessageBoxes()`)로 두 개의 메시지 박스("Hello", "World")가 순차적으로 표시되는 상황 재현
 - WM_TIMER 메시지를 활용한 타이밍 기반 상태 변화 구현
 - 주석을 통해 코드 흐름과 동작 원리 설명
 
@@ -30,7 +30,7 @@
 
 ## 시나리오 설명
 
-- 창 생성 시 타이머(WM_TIMER)가 설정되고, `MessageTimer()` 함수가 호출됩니다.
+- 창 생성 시 타이머(WM_TIMER)가 설정되고, `ShowMessageBoxes()` 함수가 호출됩니다.
 - 첫 번째 메시지 박스("Hello")가 표시될 때 내부 메시지 루프가 동작하여 WM_TIMER 메시지를 처리합니다.
 - 이로 인해 상태 변수(`gCount`)가 변경되어, 첫 번째 메시지 박스가 닫히자마자 두 번째 메시지 박스("World")가 자동으로 표시됩니다.
 
@@ -45,7 +45,7 @@ case WM_CREATE:
 	// 100ms 간격으로 WM_TIMER 설정
 	SetTimer(hwnd, eTimerId::TimerMessageBox, 100, nullptr);
 
-	// MessageTimer 호출하여 메시지 박스 표시
+	// ShowMessageBoxes 호출하여 메시지 박스 표시
 	ShowMessageBoxes();
 
 	// 타이머로 인해 gCount가 변경되었다면 프로그램 종료
